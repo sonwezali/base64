@@ -42,6 +42,8 @@ def get_mode():
 def group_in_threes(expr):
     groups = []
     for i in range(math.ceil(len(expr) / 3)):
+    # math.ceil() method is necessary to avoid from errors originating from
+    # the cases when the length of the expr is not a product of 3. 
         start_i = 3 * i
         end_i = start_i + 3
         groups.append(expr[start_i:end_i])

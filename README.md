@@ -1,6 +1,6 @@
 # Base64 
 
-_written by @sonwezali_
+_written by sonwezali_
 
 ## What Is Base64 and How Does It Work?
 

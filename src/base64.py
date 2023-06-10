@@ -6,4 +6,23 @@
 
 # This is a Base64 encoder/decoder written by sonwezali using Python.
 
+def main():
+    mode = get_input()
+    if (mode == "E"):
+        encode("test")
+    else:
+        decode("test")
 
+def get_input():
+    mode = ""
+    while(mode not in ["E", "D"]):
+        mode = input('"E" to encode, "D" to decode: ').upper()
+    return mode
+
+def encode(input_value):
+    print("entered to encode " + input_value)
+
+def decode(input_value):
+    print("entered to decode " + input_value)
+
+main()

@@ -6,6 +6,8 @@
 
 # This is a Base64 encoder/decoder written by sonwezali using Python.
 
+import math
+
 # main function
 def main():
     print("""
@@ -39,12 +41,16 @@ def get_mode():
 # function to group the characters in threes wihle encoding 
 def group_in_threes(expr):
     groups = []
-    for i in range(0, len(expr) // 3):
-        pass
+    for i in range(math.ceil(len(expr) / 3)):
+        start_i = 3 * i
+        end_i = start_i + 3
+        groups.append(expr[start_i:end_i])
+    return groups
 
 # function which encodes the input
 def encode(input_value):
     print("entered to encode " + input_value)
+    print(group_in_threes(input_value))
 
 # function which decodes the input
 def decode(input_value):

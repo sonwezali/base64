@@ -27,14 +27,14 @@ def main():
 # function to get the expression which will be encoded or decoded
 def get_input_value():
     input_value = ""
-    while(len(input_value) == 0):
+    while (len(input_value) == 0):
         input_value = input("Enter the expression you want to encode/decode: ")
     return input_value
 
 # function to define which operation to perform
 def get_mode():
     mode = ""
-    while(mode not in ["E", "D"]):
+    while (mode not in ["E", "D"]):
         mode = input('"E" to encode, "D" to decode: ').upper()
     return mode
 
@@ -49,6 +49,19 @@ def group_in_threes(expr):
         groups.append(expr[start_i:end_i])
     return groups
 
+# function to group characters in fours while decoding
+def group_in_fours(expr):
+    groups = []
+    for i in range(math.ceil(len(expr) / 4)):
+    # math.ceil() method is necessary to avoid from errors originating from
+    # the cases when the length of the expr is not a product of 4. 
+        start_i = 4 * i
+        end_i = start_i + 4
+        groups.append(expr[start_i:end_i])
+    while (len(groups[-1]) < 4):
+        groups[-1] += "="
+    return groups
+
 # function which encodes the input
 def encode(input_value):
     print("entered to encode " + input_value)
@@ -57,5 +70,6 @@ def encode(input_value):
 # function which decodes the input
 def decode(input_value):
     print("entered to decode " + input_value)
+    print(group_in_fours(input_value))
 
 main()

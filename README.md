@@ -4,5 +4,6 @@ _This repository is not completed yet..._
 
 ## What Is Base64 and How Does It Work?
 
-Here will be the link to the blog.
+You can have a look at the blog I've written:
+https://alisonwez.medium.com/base64-encoding-decoding-97d54731b450
 

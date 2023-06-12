@@ -4,7 +4,7 @@
 #   \_/\_/ |___|____\___\___/|_|  |_|___|   |_| \___/  |___/_/ \_\___/___\___/ |_|  |___/_/ |___/ 
 
 
-# This is a Base64 encoder/decoder written by sonwezali using Python.
+# This is a Base64 encoder/decoder written by sonwezali.
 
 import math
 

@@ -49,6 +49,18 @@ def group_in_threes(expr):
         groups.append(expr[start_i:end_i])
     return groups
 
+# function to convert ASCII values into binary values
+def ascii_values_to_binary(groups):
+    binary_group = [] 
+    if len(groups) == 0:
+        return 0
+    else:
+        for group in groups:
+            binary_string = ""
+            for char in group:
+                len_of_binary_format = len(bin(ord(char)))
+                
+
 # function to group characters in fours while decoding
 def group_in_fours(expr):
     groups = []
@@ -73,3 +85,4 @@ def decode(input_value):
     print(group_in_fours(input_value))
 
 main()
+

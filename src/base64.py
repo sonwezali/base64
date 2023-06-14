@@ -49,9 +49,14 @@ def group_in_threes(expr):
         groups.append(expr[start_i:end_i])
     return groups
 
+def grouping_in_six_bits(binary_groups):
+    six_bit_groups = []
+    for twenty_four_bits in binary_groups:
+        pass
+
 # function to convert ASCII values into binary values
 def ascii_values_to_binary(groups):
-    binary_group = [] 
+    binary_groups = [] 
     if len(groups) != 0:
         for group in groups:
             binary_string_of_group = ""
@@ -59,8 +64,8 @@ def ascii_values_to_binary(groups):
                 len_of_binary_format = len(bin(ord(char))[2:])
                 binary_string = ("0" * (8 - len_of_binary_format)) + bin(ord(char))[2:] 
                 binary_string_of_group += binary_string
-            binary_group.append(binary_string_of_group)
-    return binary_group
+            binary_groups.append(binary_string_of_group)
+    return binary_groups
 
 # function to group characters in fours while decoding
 def group_in_fours(expr):

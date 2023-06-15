@@ -70,6 +70,7 @@ def ascii_values_to_binary(groups):
                 binary_string = ("0" * (8 - len_of_binary_format)) + bin(ord(char))[2:] 
                 binary_string_of_group += binary_string
             while len(binary_string_of_group) < 24:
+                pass # zeros will be added to the end
             binary_groups.append(binary_string_of_group)
     return binary_groups
 

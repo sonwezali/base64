@@ -52,7 +52,12 @@ def group_in_threes(expr):
 def grouping_in_six_bits(binary_groups):
     six_bit_groups = []
     for twenty_four_bits in binary_groups:
-        pass
+        group_in_six = []
+        for i in range(0, 24, 6):
+            six_group = twenty_four_bits[i:i+6]
+            group_in_six.append(six_group)
+        six_bit_groups.append(group_in_six)
+    return six_bit_groups
 
 # function to convert ASCII values into binary values
 def ascii_values_to_binary(groups):
@@ -84,7 +89,9 @@ def group_in_fours(expr):
 def encode(input_value):
     print("entered to encode " + input_value)
     groups = group_in_threes(input_value)
-    print(ascii_values_to_binary(groups)) 
+    binary_group = ascii_values_to_binary(groups) 
+    print(binary_group)
+    print(grouping_in_six_bits(binary_group))
 
 # function which decodes the input
 def decode(input_value):

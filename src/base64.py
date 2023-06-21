@@ -8,8 +8,16 @@
 
 import math
 
+base64_values = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+                 "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+                 "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g",
+                 "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+                 "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2",
+                 "3", "4", "5", "6", "7", "8", "9", "+", "/"]
+
 # main function
 def main():
+
     print("""
            ------------------------------
           |                              |
@@ -93,7 +101,17 @@ def encode(input_value):
     groups = group_in_threes(input_value)
     binary_group = ascii_values_to_binary(groups) 
     print(binary_group)
-    print(grouping_in_six_bits(binary_group))
+    six_bit_groups = grouping_in_six_bits(binary_group)
+    print(six_bit_groups)
+    number_of_gaps = 0
+    if len(input_value) % 3 != 0:
+        if len(input_value) % 3 == 1:
+            number_of_gaps = 2
+        else:
+            number_of_gaps = 1
+    print(number_of_gaps)
+    # by using the variable <number_of_gaps>, it will be easier to detect
+    # which "000000"s I should ignore.
 
 # function which decodes the input
 def decode(input_value):

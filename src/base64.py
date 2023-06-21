@@ -100,18 +100,25 @@ def encode(input_value):
     print("entered to encode " + input_value)
     groups = group_in_threes(input_value)
     binary_group = ascii_values_to_binary(groups) 
-    print(binary_group)
     six_bit_groups = grouping_in_six_bits(binary_group)
-    print(six_bit_groups)
     number_of_gaps = 0
     if len(input_value) % 3 != 0:
         if len(input_value) % 3 == 1:
             number_of_gaps = 2
         else:
             number_of_gaps = 1
-    print(number_of_gaps)
-    # by using the variable <number_of_gaps>, it will be easier to detect
-    # which "000000"s I should ignore.
+    for i in range(number_of_gaps):
+        six_bit_groups[-1].pop()
+    
+    encoded_text = ""
+    for quart in six_bit_groups:
+        for value in quart:
+            encoded_text += str(base64_values[int(value, 2)])
+    
+    for i in range(number_of_gaps):
+        encoded_text += "="
+
+    print(encoded_text)
 
 # function which decodes the input
 def decode(input_value):

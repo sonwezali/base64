@@ -93,9 +93,31 @@ def group_in_fours(expr):
         groups.append(expr[start_i:end_i])
     return groups
 
+def group_of_binary(group):
+    binary_group = []
+    for quart in group:
+        quart_in_bin = ""
+        for ch in quart:
+           value = base64_values.index(ch)
+           bin_value = bin(value)[2:]
+           while len(bin_value) < 6:
+               bin_value = "0" + bin_value
+           quart_in_bin += bin_value
+        binary_group.append(quart_in_bin)
+    
+    return binary_group
+
+def group_in_bytes(binary_group):
+    byte_group = []
+    binary_string = "".join(binary_group)
+
+    for i in range(0,len(binary_string), 8):
+        byte_group.append(binary_string[i:i+8])
+
+    return byte_group
+
 # function which encodes the input
 def encode(input_value):
-    print('Entered to encode for "' + input_value + '"')
     groups = group_in_threes(input_value)
     binary_group = ascii_values_to_binary(groups) 
     six_bit_groups = grouping_in_six_bits(binary_group)
@@ -120,11 +142,27 @@ def encode(input_value):
 
 # function which decodes the input
 def decode(input_value):
-    print("entered to decode " + input_value)
     group = group_in_fours(input_value)
+    number_of_gaps = 0
+    
     while group[-1][-1] == "=":
         group[-1] = group[-1][:-1]
-    print(group)
+        number_of_gaps += 1
 
+    binary_group = group_of_binary(group)
+
+    if number_of_gaps == 1:
+        binary_group[-1] = binary_group[-1][:16]
+    elif number_of_gaps == 2:
+        binary_group[-1] = binary_group[-1][:8]
+
+    byte_group = group_in_bytes(binary_group)
+
+    decoded_text = ""
+    for byte in byte_group:
+        decoded_text += chr(int(byte, 2))
+
+    print('\nThe decoded text: ' + decoded_text + '\n')
+    
 main()
 

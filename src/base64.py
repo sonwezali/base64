@@ -91,13 +91,11 @@ def group_in_fours(expr):
         start_i = 4 * i
         end_i = start_i + 4
         groups.append(expr[start_i:end_i])
-    while (len(groups[-1]) < 4):
-        groups[-1] += "="
     return groups
 
 # function which encodes the input
 def encode(input_value):
-    print("entered to encode " + input_value)
+    print('Entered to encode for "' + input_value + '"')
     groups = group_in_threes(input_value)
     binary_group = ascii_values_to_binary(groups) 
     six_bit_groups = grouping_in_six_bits(binary_group)
@@ -118,12 +116,15 @@ def encode(input_value):
     for i in range(number_of_gaps):
         encoded_text += "="
 
-    print(encoded_text)
+    print('\nThe encoded text: ' + encoded_text + '\n')
 
 # function which decodes the input
 def decode(input_value):
     print("entered to decode " + input_value)
-    print(group_in_fours(input_value))
+    group = group_in_fours(input_value)
+    while group[-1][-1] == "=":
+        group[-1] = group[-1][:-1]
+    print(group)
 
 main()
 
